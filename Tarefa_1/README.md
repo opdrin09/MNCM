@@ -36,9 +36,13 @@ As imagens a seguir são os resultados finais gerados pelo código. **Não é ne
 
 **Figura 1: Comparação de Passos de Tempo (Arrasto de Stokes)**
 ![Gráfico de Stokes](./grafico_stokes_comparacao_dt.png)
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/1b38515b-ce26-48ff-b99b-eb63b875ab1f" />
 
 **Figura 2: Efeito do Arrasto Quadrático (Variação de Reynolds)**
 ![Gráfico Quadrático](./grafico_quadratico_comparacao_re.png)
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/7fe74c60-d94e-4800-a90c-010c62136168" />
+
+
 
 ---
 
