@@ -73,4 +73,4 @@ Existem duas opções para executar a análise e regenerar os gráficos.
 
 Clique no botão abaixo para abrir um notebook no Google Colab. Este notebook irá configurar o ambiente Julia e executar o script `tarefa_1.jl` diretamente do repositório. Basta executar as células em ordem.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SEU_USUARIO/SEU_REPOSITORIO/blob/main/tarefa_1/executar_tarefa_1.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/[github/opdrin09/MNCM/blob/main/Tarefa_1/executar_tarefa_1.ipynb)
