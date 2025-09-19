@@ -72,6 +72,9 @@ for i in 0:7
     )
 end
 
+println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+println("                         Gráfico de Stokes")
+println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 display(grafico_stokes) # Mostra o gráfico com as soluções numéricas e analítica
 
 
@@ -102,6 +105,10 @@ for i in 0:10
     )
 end
 
+
+println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+println("                        Gráfico de Stokes")
+println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 display( grafico_reynolds) # Mostra o gráfico com as soluções para diferentes Re
 
 
@@ -157,4 +164,7 @@ plot!(grafico_comparativo, tempo_exato, velocidade_exata,
     linestyle = :dash
 )
 
+println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+println("                        Gráfico de Stokes")
+println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 display(grafico_comparativo)
