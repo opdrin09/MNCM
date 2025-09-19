@@ -59,12 +59,36 @@ A **Questão 5** pede a comparação da solução numérica com a solução exat
 As imagens a seguir são os resultados finais gerados pelo código. **Não é necessário executar o script para visualizá-los.**
 
 **Figura 1: Comparação de Passos de Tempo (Arrasto de Stokes)**
-![Gráfico de Stokes](./grafico_stokes_comparacao_dt.png)
+<p align="center">
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/1f36f674-9902-4d77-ad2f-8ec6154dc809" />
+</p>
 
 **Figura 2: Efeito do Arrasto Quadrático (Variação de Reynolds)**
-![Gráfico Quadrático](./grafico_quadratico_comparacao_re.png)
+
+<p align="center"> <img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/b5966509-be79-4798-8fa6-dff305e69f93" /> </p>
+
+**Figura 3 :Comparação da solução considerando a variação de Reynolds e a solução apresentada no artigo**
+
+<p align="center"> <img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/0f757296-9a1b-4f17-9b64-9998aeee7578" /> </p>    
 
 ---
+### 📢 Discussão dos resultados
+
+#### Parte 1
+
+Aqui nota-se que para valores de $\Delta t>1$  ainda é notável a diferença da solução numérica para com a solução analítica, abaixo de 1, as soluções tendem a ficar cada vez mais próximas, $\Delta t = 0.117$ as soluções numéricas e analíticas já são quase indistinguíveis na resolução da imagem, confirmando que a solução numérica tende a convergir quando o passo $\Delta t$ é menor.
+
+#### Parte 2 
+
+Na parte 2 faz-se a verificação do equacionamento por meio da comparação com a solução analítica quando $Re = 0$ que é 
+conhecida e verifica-se que as soluções se sobrepõe, valindando-se o modelo. A partir disso pode-se visualizar como a velocidade adimensional muda a medidia que o número de Reynolds aumenta.
+
+#### Parte 3
+
+Aqui, faz-se a comparação da solução com método numérico, validado anteriormente, com a solução proposta no artigo mostrado na aula e nota-se que inicialmente a solução diverge, mas após um curto período de tempo, as soluções se igualam. É importante ressaltar que isso só ocorre para $Re$ baixo, para valores mais altos, as soluções já se igualam no começo, *Execute o código para melhor visualização*, o que sugere que nosso modelo físico não é completamente adequado para esses valores.
+
+
+
 
 ### ▶️ Como Executar o Código
 
@@ -75,7 +99,7 @@ Existem duas opções para executar a análise e regenerar os gráficos.
 1.  Acesse a página principal do repositório no GitHub.
 2.  Clique no botão verde **`< > Code`** e selecione **`Download ZIP`**.
 3.  Extraia o arquivo `.zip` em sua máquina.
-4.  Abra o terminal Julia, navegue até a pasta extraída `NOME-DO-SEU-REPOSITORIO-main/tarefa_1`.
+4.  Abra o terminal Julia, navegue até a pasta extraída `https://github.com/opdrin09/MNCM/tree/main/Tarefa_1`.
 5.  Ative o ambiente do projeto e instale as dependências:
     ```julia
     # Dentro do REPL do Julia
@@ -86,10 +110,10 @@ Existem duas opções para executar a análise e regenerar os gráficos.
 6.  Execute o script:
     ```julia
     # Ainda no REPL
-    include("tarefa_1.jl")
+    include("tarefa1.jl")
     ```
 
 #### Opção B: Google Colab (Fácil, sem instalação)
 
-Clique no botão abaixo para abrir um notebook no Google Colab. Este notebook irá configurar o ambiente Julia e executar o script `tarefa_1.jl` diretamente do repositório. Basta executar as células em ordem
+Clique no botão abaixo para abrir um notebook no Google Colab. Este notebook irá configurar o ambiente Julia e executar o script `tarefa1.jl` diretamente do repositório. Basta executar as células em ordem
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/opdrin09/MNCM/blob/main/Tarefa_1/executar_tarefa_1.ipynb)
