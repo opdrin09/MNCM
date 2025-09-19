@@ -76,6 +76,8 @@ println("")
 println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 println("                         Gráfico com Re = 0")
 println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+println("")
+println("")
 display(grafico_stokes) # Mostra o gráfico com as soluções numéricas e analítica
 
 
@@ -111,6 +113,8 @@ println("")
 println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 println("                         Gráfico com Re > 0")
 println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+println("")
+println("")
 
 display( grafico_reynolds) # Mostra o gráfico com as soluções para diferentes Re
 
@@ -171,4 +175,6 @@ println("")
 println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 println("                    Gráfico comparativo com o artigo")
 println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+println("")
+println("")
 display(grafico_comparativo)
