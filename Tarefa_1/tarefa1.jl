@@ -1,5 +1,5 @@
 # tarefa1.jl
-# Autor: Pedro Henrique da Silva Costa
+# Autor: Pedro Henrique da Silva Costa | Matrícula: 231012639
 # Data: 19-09-2025
 # Descrição: Simulação numérica de partículas em um fluido com arrasto de Stokes e arrasto quadrático.
 # Repositório: https://github.com/opdrin09/MNCM/tree/main
