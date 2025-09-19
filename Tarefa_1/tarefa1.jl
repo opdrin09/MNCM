@@ -5,6 +5,12 @@
 # Repositório: https://github.com/opdrin09/MNCM/tree/main
 # Versão disponível online: https://colab.research.google.com/github/opdrin09/MNCM/blob/main/Tarefa_1/executar_tarefa_1.ipynb
 
+
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# CASO NÃO TENHA O AMBIENTE JULIA INSTALADO, VÁ NA VERSÃO DISPONÍVEL ONLINE!
+# ACESSE O REPOSITÓRIO NA PASTA "Tarefa_1" PARA VER DISCUSSÃO DO PROBLEMA!
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 # Carrega a biblioteca para fazer os gráficos
 using Plots
 
