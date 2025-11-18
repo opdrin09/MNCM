@@ -9,6 +9,8 @@ Este repositório contém as soluções para as tarefas da disciplina de Método
 
 Navegue pelos diretórios abaixo para acessar o código, os relatórios e as instruções de execução de cada tarefa.
 
-* **[Tarefa 1: Movimento de Partícula com Arrasto](./Tarefa_1/README.md)**
-* `[Tarefa 2: (A ser adicionada)]`
-* `[Tarefa 3: (A ser adicionada)]`
+* **[Tarefa 1: Movimento de Partícula com Arrasto](./Tarefa_1)**
+* **[Programa 2](./Programa%202)**
+* **[Programa 3](./Programa%203)**
+* **[Programa 4](./Programa%204)**
+* **[Programa 5: Comparação de Métodos de Otimização](./Programa%205)**
