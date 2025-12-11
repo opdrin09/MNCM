@@ -1,0 +1,3 @@
+# Raiz final encontrada: 9.000000000058945
+Iteracao,Raiz_Aproximada,Erro_Relativo
+0,9.000000000058945,1.3098855334039053e-11

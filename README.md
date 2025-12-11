@@ -1,18 +1,48 @@
-# Repositório de Métodos Numéricos para Ciências Mecânicas
-## Aluno: Pedro Henrique da Silva Costa | Matrícula: 231012639
+# Métodos Numéricos para Ciências Mecânicas (Refactored)
 
-Este repositório contém as soluções para as tarefas da disciplina de Métodos Numéricos para Ciências Mecânicas, ministrada pelo Professor Rafael Gabler.
+Este repositório contém a coleção de programas e tarefas desenvolvidos para a disciplina de **Métodos Numéricos para Ciências Mecânicas (MNCM)** na Universidade de Brasília.
+
+O repositório foi reorganizado e refatorado para garantir melhor estruturação, nomes de arquivos padronizados e geração automatizada de resultados visuais.
+
+## Estrutura do Repositório
+
+O projeto está dividido em módulos numerados conforme a ordem de desenvolvimento:
+
+*   **[01_Tarefa_Intro](./01_Tarefa_Intro/)**: Scripts introdutórios em Julia.
+*   **[02_Reator_Newton_Raphson](./02_Reator_Newton_Raphson/)**: Solução de sistemas não-lineares (CSTR) com mapas de calor.
+*   **[03_Zeros_Funcoes](./03_Zeros_Funcoes/)**: Comparação dos métodos de Müller e Secante para raízes polinomiais.
+*   **[04_Conducao_Calor_1D](./04_Conducao_Calor_1D/)**: Simulação transiente de condução de calor (Diferenças Finitas) com animações.
+*   **[05_Otimizacao_Multidimensional](./05_Otimizacao_Multidimensional/)**: Comparação de métodos de otimização (Aclive, Gradientes Conjugados, Newton, Levenberg-Marquardt).
+*   **[06_Reatores_Mistos](./06_Reatores_Mistos/)**: Solução de EDOs para resposta transiente de reatores.
+
+## Resumo dos Resultados Gerados
+
+Cada pasta acima contém um `README.md` específico e uma subpasta `images/` com seus respectivos resultados. Abaixo estão alguns exemplos dos gráficos gerados automaticamente pelos scripts refatorados:
+
+| Condução de Calor (Animação) | Otimização Multidimensional |
+| :---: | :---: |
+| ![Calor](04_Conducao_Calor_1D/images/tarefa_2_aplicacao_animacao.gif) | ![Otimização](05_Otimizacao_Multidimensional/images/result_plot.png) |
+
+| Convergência (Raízes) | Reator CSTR (Heatmap) |
+| :---: | :---: |
+| ![Raízes](03_Zeros_Funcoes/images/grafico_convergencia_primeira_raiz.png) | ![CSTR](02_Reator_Newton_Raphson/images/mapa_concentracao.png) |
+
+## Como Utilizar
+
+Todos os scripts Python foram refatorados para execução direta (sem inputs interativos bloqueantes) e salvam os resultados na pasta `images/` local de cada módulo.
+
+Para rodar qualquer programa, navegue até a pasta e execute:
+```bash
+cd 0X_Nome_Da_Pasta
+python nome_do_script.py
+```
+
+## Requisitos Gerais
+- Python 3.x
+- `numpy`
+- `matplotlib`
+- `sympy` (apenas para Otimização)
+- `pillow` (opcional, para salvar GIFs)
 
 ---
-
-### 📚 Índice de Tarefas
-
-Navegue pelos diretórios abaixo para acessar o código, os relatórios e as instruções de execução de cada tarefa.
-
-* **[Tarefa 1: Movimento de Partícula com Arrasto](./Tarefa_1)**
-* **[Programa 2](./Programa%202)**
-* **[Programa 3](./Programa%203)**
-* **[Programa 4](./Programa%204)**
-* **[Programa 5: Comparação de Métodos de Otimização](./Programa%205)**
-* **[Programa 6: Solução do problema da resposta transiente de um sistema de reatores mistos](./Programa%205)**
-
+*Organizado por Pedro Henrique da Silva Costa - Matrícula 231012639*
