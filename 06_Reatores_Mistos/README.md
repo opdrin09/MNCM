@@ -1,6 +1,17 @@
-# Programa 6: Reatores Mistos (EDO)
+# Programa 6: Reatores Mistos (EDOs)
 
-Este programa resolve um problema de resposta transiente em reatores químicos modelado por Equações Diferenciais Ordinárias (EDOs). Ele compara a solução obtida por diferentes métodos de integração numérica, como Runge-Kutta de 4ª ordem (RK4) e métodos Runge-Kutta embutidos.
+## Contextualização do Problema
+Este programa simula o comportamento dinâmico (transiente) de um sistema de reatores químicos, modelado por um sistema de Equações Diferenciais Ordinárias (EDOs). O problema físico consiste em determinar como a concentração de reagentes ($C_A$) e a temperatura ($T$) evoluem no tempo dentro do reator até atingirem o estado estacionário.
+
+Matematicamente, temos um Problema de Valor Inicial (PVI) da forma:
+$$ \frac{d\mathbf{y}}{dt} = f(t, \mathbf{y}), \quad \mathbf{y}(0) = \mathbf{y}_0 $$
+onde $\mathbf{y} = [C_A, T]^T$.
+
+Para resolver este sistema, o programa implementa métodos numéricos de integração temporal da família Runge-Kutta:
+1.  **Runge-Kutta de 4ª Ordem (RK4):** Um método clássico de passo fixo que oferece um excelente balanço entre precisão e custo computacional.
+2.  **Runge-Kutta-Fehlberg (RK45/Embedded):** Um método adaptativo que estima o erro de truncamento local comparando soluções de 4ª e 5ª ordem, permitindo (teoricamente) ajustar o passo de tempo. Neste script, ele é usado principalmente para fins comparativos de precisão em relação ao RK4 clássico.
+
+O resultado é a trajetória temporal das variáveis de estado, permitindo visualizar a resposta dinâmica e a estabilidade do processo.
 
 ## Descrição
 

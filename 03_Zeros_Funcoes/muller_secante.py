@@ -200,6 +200,8 @@ def plotar_convergencia_primeira_raiz(resultados):
     a partir de diferentes chutes iniciais.
     """
     output_dir = "03_Zeros_Funcoes/images"
+    if os.path.isfile(output_dir):
+        os.remove(output_dir)
     if not os.path.exists(output_dir): os.makedirs(output_dir)
 
     plt.style.use('seaborn-v0_8-whitegrid')
@@ -226,6 +228,8 @@ def plotar_comparacao_geral(ponto_inicial):
     a convergência para todas as raízes.
     """
     output_dir = "03_Zeros_Funcoes/images"
+    if os.path.isfile(output_dir):
+        os.remove(output_dir)
     if not os.path.exists(output_dir): os.makedirs(output_dir)
 
     plt.style.use('seaborn-v0_8-whitegrid')

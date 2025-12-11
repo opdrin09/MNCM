@@ -101,8 +101,11 @@ print("Simulação concluída.")
 
 # Plotagem
 plt.figure(figsize=(10, 6))
-
 output_dir = "06_Reatores_Mistos/images"
+
+if os.path.isfile(output_dir):
+    os.remove(output_dir)
+
 if not os.path.exists(output_dir):
      os.makedirs(output_dir)
 

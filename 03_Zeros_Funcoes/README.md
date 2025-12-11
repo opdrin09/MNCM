@@ -1,6 +1,12 @@
 # Programa 3: Métodos de Müller e Secante
 
-Este programa implementa os métodos numéricos de **Müller** e da **Secante** para encontrar as raízes de um polinômio. Ele demonstra a convergência para a primeira raiz e utiliza a técnica de deflação para encontrar todas as raízes do polinômio teste $f(x) = (x-1)(x-3)(x-5)(x-7)(x-9)$.
+## Contextualização do Problema
+A determinação de raízes de polinômios e funções transcendentais é um problema fundamental em engenharia e ciências aplicadas. Este programa foca na resolução de raízes de polinômios de grau elevado utilizando dois métodos numéricos robustos:
+
+1.  **Método de Müller:** Um método iterativo que utiliza três pontos iniciais para ajustar uma parábola (interpolação quadrática) a cada passo. Diferente do método da Secante, o método de Müller é capaz de encontrar raízes complexas pares a partir de chutes iniciais reais, devido à resolução da fórmula quadrática no domínio complexo.
+2.  **Método da Secante:** Um método iterativo linear que aproxima a derivada da função por uma reta secante entre dois pontos. É mais simples que o método de Newton-Raphson pois não requer derivada analítica, mas pode convergir mais lentamente ou divergir se a função não for bem comportada.
+
+O programa aplica esses métodos para encontrar todas as raízes de um polinômio teste, utilizando a técnica de **deflação polinomial** para encontrar raízes subsequentes após a primeira ser determinada. O objetivo é comparar a eficiência e a robustez de convergência de ambos os métodos.
 
 ## Descrição
 

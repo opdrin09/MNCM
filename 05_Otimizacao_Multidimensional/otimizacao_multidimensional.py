@@ -467,6 +467,8 @@ def plotar_comparacao(fnum, caminhos, nomes, vetor_inicial, expr_str, plot_title
     
     import os
     output_dir = "05_Otimizacao_Multidimensional/images"
+    if os.path.isfile(output_dir):
+        os.remove(output_dir)
     if not os.path.exists(output_dir): os.makedirs(output_dir)
     
     save_path = os.path.join(output_dir, 'result_plot.png')

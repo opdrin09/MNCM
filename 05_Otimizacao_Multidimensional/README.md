@@ -1,5 +1,16 @@
 # Programa 5: Otimização Multidimensional
 
+## Contextualização do Problema
+Este programa aborda o problema de encontrar pontos ótimos (mínimos, máximos ou pontos de sela) em superfícies multidimensionais descritas por funções de duas variáveis $f(x, y)$. Problemas de otimização como este são cruciais em design de engenharia, economia e aprendizado de máquina, onde se deseja minimizar custos ou maximizar eficiência.
+
+O script implementa e compara quatro métodos clássicos de otimização:
+1.  **Método do Aclive Máximo (Steepest Descent/Ascent):** Segue a direção do gradiente negativo (para mínimo) ou positivo (para máximo). É robusto, mas pode ser lento em regiões de "vales" estreitos.
+2.  **Método dos Gradientes Conjugados:** Melhora a eficiência do gradiente utilizando direções conjugadas, evitando o comportamento de "zigue-zague" em vales estreitos.
+3.  **Método de Newton Multidimensional:** Utiliza informações de segunda ordem (Hessiana) para convergir quadraticamente (muito rápido) para o ponto crítico, mas é sensível a pontos iniciais distantes e custoso computacionalmente.
+4.  **Método de Levenberg-Marquardt:** Uma abordagem híbrida que interpola entre o método do gradiente e o método de Gauss-Newton, oferecendo robustez longe do mínimo e velocidade perto dele.
+
+O programa testa esses métodos em diferentes cenários ("Vales", "Selas", Funções arbitrárias) para demonstrar suas características de convergência.
+
 Este programa implementa e compara quatro métodos clássicos de otimização multidimensional para encontrar mínimos (ou máximos) de funções de duas variáveis $f(x, y)$.
 
 ## Métodos Implementados

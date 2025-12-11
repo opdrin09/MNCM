@@ -108,6 +108,8 @@ def resolver(x0, y0, system_funcs, p): #função que aplica o método numérico
 # --- Execução Automática (Sem Inputs) ---
 
 output_dir = "02_Reator_Newton_Raphson/images"
+if os.path.isfile(output_dir):
+    os.remove(output_dir)
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 

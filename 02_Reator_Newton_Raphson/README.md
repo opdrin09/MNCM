@@ -1,6 +1,15 @@
 # Programa 2: Reator CSTR com Newton-Raphson
 
-Este programa resolve o sistema de equações não-lineares que modela um reator CSTR (Continuous Stirred-Tank Reactor) utilizando o método de Newton-Raphson. O objetivo é encontrar os pontos de operação estacionária (concentração e temperatura) e analisar a multiplicidade de estados estacionários.
+## Contextualização do Problema
+O problema abordado neste programa envolve a análise de um reator químico CSTR (Continuous Stirred Tank Reactor), onde ocorrem reações exotérmicas. O objetivo é determinar os estados estacionários de concentração ($C_A$) e temperatura ($T$) do reator.
+
+O sistema é modelado por um par de equações não-lineares acopladas que descrevem o balanço de massa e o balanço de energia no reator. A não-linearidade surge principalmente devido à dependência exponencial da taxa de reação com a temperatura (Lei de Arrhenius).
+
+As equações governantes no estado estacionário são da forma:
+1. **Balanço de Massa:**  $f_1(C_A, T) = 0$
+2. **Balanço de Energia:** $f_2(C_A, T) = 0$
+
+O método numérico de Newton-Raphson para sistemas é utilizado para encontrar as raízes simultâneas dessas equações ($C_A$ e $T$) a partir de estimativas iniciais. O programa também gera mapas de calor para visualizar como as soluções de equilíbrio (concentração e temperatura finais) variam em função das condições iniciais do sistema.
 
 ## Descrição
 
