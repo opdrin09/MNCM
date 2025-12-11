@@ -14,3 +14,5 @@ Navegue pelos diretórios abaixo para acessar o código, os relatórios e as ins
 * **[Programa 3](./Programa%203)**
 * **[Programa 4](./Programa%204)**
 * **[Programa 5: Comparação de Métodos de Otimização](./Programa%205)**
+* **[Programa 6: Solução do problema da resposta transiente de um sistema de reatores mistos](./Programa%205)**
+
