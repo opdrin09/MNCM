@@ -30,7 +30,7 @@ O gráfico resultante será salvo automaticamente na pasta `images/`.
 ### Comparação dos Métodos Numéricos
 O gráfico abaixo apresenta a solução transiente obtida.
 
-![Gráfico de Reatores Mistos](images/reatores_mistos_plot.png)
+![Gráfico de Reatores Mistos](images/reatores_mistos_plott.png)
 
 ## Dependências
 - `numpy`
