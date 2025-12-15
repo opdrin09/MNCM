@@ -2,34 +2,36 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/opdrin09/MNCM/blob/main/01_Tarefa_Intro/executar_tarefa_1.ipynb)
 
-Nesta primeira tarefa, a gente simula o movimento de uma partícula esférica caindo em um fluido viscoso. O objetivo é entender como diferentes forças de arrasto afetam a velocidade da partícula ao longo do tempo.
+Esta tarefa aborda a simulação numérica do movimento de uma partícula esférica em queda livre em um fluido viscoso. O objetivo central é analisar a influência das diferentes forças de arrasto na velocidade da partícula ao longo do tempo.
 
 ## O Problema Físico
 
-Quando uma partícula cai em um fluido, ela sofre três forças principais: o peso (puxando pra baixo), o empuxo (empurrando pra cima) e o arrasto do fluido (resistindo ao movimento). A equação que descreve isso, na forma adimensional, é:
+A dinâmica da partícula em queda é governada pelo balanço de forças: Peso, Empuxo e Arrasto. Em termos adimensionais, a equação de movimento é dada por:
 
-$$ \frac{dv}{dt} = \frac{1 - v - \frac{3}{8} Re \cdot v^2}{St} $$
+$$
+\frac{dv}{dt} = \frac{1 - v - \frac{3}{8} Re \cdot v^2}{St}
+$$
 
 Onde:
-- **$v$**: velocidade da partícula (adimensional)
-- **$St$** (Número de Stokes): mede a inércia da partícula
-- **$Re$** (Número de Reynolds): indica se o escoamento é laminar ou turbulento
+- $v$: Velocidade adimensional da partícula.
+- $St$ (Número de Stokes): Parâmetro que caracteriza a inércia da partícula.
+- $Re$ (Número de Reynolds): Quantifica a razão entre forças inerciais e viscosas.
 
-### Dois Regimes Diferentes
+### Regimes de Escoamento
 
-1. **Arrasto de Stokes ($Re \approx 0$)**: Quando a partícula é muito pequena ou o fluido muito viscoso, o arrasto é proporcional à velocidade ($F_d \propto v$). Nesse caso, a equação tem solução analítica exata: $v(t) = 1 - e^{-t/St}$.
+1.  **Regime de Stokes ($Re \approx 0$):** Para partículas pequenas ou fluidos muito viscosos, o arrasto é linearmente proporcional à velocidade ($F_d \propto v$). Neste caso, a equação admite solução analítica exata: $v(t) = 1 - e^{-t/St}$.
 
-2. **Arrasto Quadrático ($Re > 0$)**: Quando a partícula fica maior ou mais rápida, aparece um termo de arrasto proporcional a $v^2$. Isso torna a equação não-linear e só dá pra resolver numericamente.
+2.  **Regime Não-Linear ($Re > 0$):** Com o aumento da velocidade ou tamanho da partícula, o arrasto quadrático torna-se relevante. A EDO torna-se não-linear, exigindo solução numérica.
 
-## Como Rodar
+## Instruções de Execução
 
-### Opção 1: Google Colab (Mais Fácil)
-Clique no badge abaixo e rode direto no navegador, sem instalar nada:
+### Opção 1: Google Colab (Recomendado)
+Acesse o ambiente interativo diretamente no navegador através do badge abaixo:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/opdrin09/MNCM/blob/main/01_Tarefa_Intro/executar_tarefa_1.ipynb)
 
-### Opção 2: Rodar Localmente
-Se você tem Julia instalado:
+### Opção 2: Execução Local
+Requer o ambiente Julia instalado:
 
 ```bash
 julia tarefa_1.jl
@@ -40,34 +42,34 @@ julia tarefa_1.jl
 ### Gráfico 1: Convergência do Método Numérico (Re = 0)
 ![Convergência Stokes](images/convergencia_stokes.png)
 
-Neste gráfico, a linha tracejada preta é a solução analítica exata. As linhas coloridas são as soluções numéricas usando o método de Runge-Kutta de 4ª ordem (RK4) com diferentes passos de tempo ($\Delta t$).
+A linha tracejada preta representa a solução analítica exata. As linhas coloridas indicam as soluções numéricas obtidas via Runge-Kutta de 4ª ordem (RK4) com variados passos de tempo ($\Delta t$).
 
-**O que observar:**
-- Quando $\Delta t$ é grande (ex: 2.0), a solução numérica fica "escadinha" e não acompanha bem a curva exata.
-- Conforme $\Delta t$ diminui (1.33, 0.889, 0.593...), as curvas vão se aproximando cada vez mais da solução analítica.
-- Para $\Delta t$ muito pequeno (< 0.2), as curvas praticamente se sobrepõem à solução exata, mostrando que o método RK4 é muito preciso quando bem configurado.
+**Análise:**
+- Para valores elevados de $\Delta t$ (ex: 2.0), observa-se uma discretização grosseira, desviando-se da curva exata.
+- Com a redução de $\Delta t$ (1.33, 0.889, 0.593...), as curvas aproximam-se progressivamente da solução analítica.
+- Para $\Delta t$ suficientemente pequeno (< 0.2), há sobreposição prática com a solução exata, evidenciando a precisão do método RK4.
 
-**Conclusão**: O método converge! Quanto menor o passo de tempo, mais precisa fica a solução.
+**Conclusão:** O método apresenta consistência e convergência; a precisão é inversamente proporcional ao passo de tempo.
 
 ### Gráfico 2: Efeito do Número de Reynolds
 ![Efeito Reynolds](images/efeito_reynolds.png)
 
-Aqui a gente fixa $\Delta t = 0.01$ (bem pequeno) e varia o número de Reynolds de 0 até 5115. A linha tracejada preta continua sendo a solução analítica para $Re=0$ (arrasto linear).
+Nesta análise, fixa-se $\Delta t = 0.01$ e varia-se o número de Reynolds de 0 a 5115. A referência (linha tracejada) permanece sendo a solução analítica para o regime linear unicamente para comparação.
 
-**O que observar:**
-- Para $Re = 0$ (azul), a curva numérica coincide perfeitamente com a analítica.
-- Conforme $Re$ aumenta (5, 15, 35, 75...), a velocidade terminal (valor final que $v$ atinge) vai **diminuindo**.
-- Para $Re = 5115$ (última curva), a partícula mal consegue acelerar, ficando com velocidade bem baixa.
+**Análise:**
+- Para $Re = 0$ (azul), a solução numérica coincide com o modelo de Stokes.
+- Com o aumento de $Re$ (5, 15, 35, 75...), a velocidade terminal da partícula decresce significativamente.
+- Para $Re = 5115$, a partícula atinge uma velocidade terminal muito reduzida.
 
-**Por quê isso acontece?** Porque o termo de arrasto quadrático ($\propto v^2$) cresce muito rápido. Quanto maior o Reynolds, mais forte é esse arrasto extra, que "segura" a partícula e impede que ela atinja velocidades altas.
+**Justificativa Física:** O termo de arrasto quadrático ($\propto v^2$) cresce rapidamente com a velocidade. Elevados números de Reynolds implicam em forças de resistência aerodinâmica/hidrodinâmica maiores, limitando a velocidade máxima que a partícula pode atingir.
 
-### Gráfico 3: Comparação com Solução Exata do Artigo
+### Gráfico 3: Validação com Literatura
 ![Comparação Artigo](images/comparacao_artigo.png)
 
-Este gráfico compara a nossa solução numérica (linha tracejada) com a solução analítica exata para o caso não-linear, obtida de um artigo científico (Equação 22 de Sobral et al.).
+Este gráfico apresenta a comparação entre a solução numérica obtida (linha tracejada) e a solução analítica exata para o caso não-linear, conforme descrita na literatura (Sobral et al., Equação 22).
 
-**O que observar:**
-- As duas curvas estão praticamente sobrepostas, mostrando que a implementação do RK4 está correta.
-- Mesmo para o caso não-linear (com o termo $v^2$), o método numérico consegue reproduzir a solução exata com alta precisão.
+**Análise:**
+- Verifica-se a sobreposição das curvas, validando a implementação do método numérico.
+- O algoritmo RK4 demonstra capacidade de reproduzir com fidelidade a dinâmica não-linear do sistema.
 
-**Conclusão**: O código foi validado! Podemos confiar nos resultados numéricos para qualquer valor de Reynolds.
+**Conclusão:** O código encontra-se validado e apto para simulações em diferentes regimes de Reynolds.

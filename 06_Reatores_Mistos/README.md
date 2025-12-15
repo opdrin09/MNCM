@@ -1,56 +1,57 @@
 # Programa 6: Dinâmica de Reatores (EDOs)
 
-## Como Rodar
-Precisa de Python 3 com `numpy` e `matplotlib`:
+## Instruções de Execução
+Requer Python 3 com as bibliotecas `numpy` e `matplotlib`:
 
 ```bash
 python reatores_mistos.py
 ```
 
-## O Problema
+## Contextualização do Problema
 
-Ao contrário do Programa 2 (que buscava o equilíbrio), aqui a gente simula **como o reator evolui no tempo** partindo de uma condição inicial até chegar no estado estacionário.
+Diferentemente da análise de estado estacionário (Programa 2), este estudo foca na **Dinâmica Transiente** do reator CSTR. Busca-se simular a evolução temporal das variáveis de estado (concentração e temperatura) partindo de uma condição inicial arbitrária até o atingimento do equilíbrio.
 
-O sistema é descrito por duas equações diferenciais ordinárias (EDOs) acopladas:
+O sistema é governado por um sistema de EDOs acopladas:
 
-1. **Variação da Concentração:**
-   $$ \frac{dC_A}{dt} = \frac{1}{\tau}(C_{A,in} - C_A) - k(T)C_A $$
+1.  **Variação da Concentração ($dC_A/dt$):**
+    $$
+    \frac{dC_A}{dt} = \frac{1}{\tau}(C_{A,in} - C_A) - k(T)C_A
+    $$
 
-2. **Variação da Temperatura:**
-   $$ \frac{dT}{dt} = \frac{1}{\rho c_p} \left[ \frac{\rho c_p}{\tau}(T_e - T) + (-\Delta H)k(T)C_A - \frac{UA}{V}(T - T_c) \right] $$
+2.  **Variação da Temperatura ($dT/dt$):**
+    $$
+    \frac{dT}{dt} = \frac{1}{\rho c_p} \left[ \frac{\rho c_p}{\tau}(T_e - T) + (-\Delta H)k(T)C_A - \frac{UA}{V}(T - T_c) \right]
+    $$
 
-Essas equações dizem: "a cada instante, como $C_A$ e $T$ estão mudando?". Integrando no tempo, descobrimos a trajetória completa.
+Estas equações descrevem a taxa instantânea de variação do sistema. A integração temporal permite reconstruir a trajetória completa ($C_A(t), T(t)$).
 
-## Os Métodos Numéricos
+## Metodologia Numérica
 
 ### RK4 (Runge-Kutta de 4ª Ordem)
-O "padrão ouro" da integração numérica. A cada passo de tempo, ele:
-1. Avalia a derivada em 4 pontos intermediários.
-2. Faz uma média ponderada dessas derivadas.
-3. Usa essa média pra atualizar a solução.
+Método de referência para integração numérica de EDOs. Em cada passo de tempo $\Delta t$:
+1.  Avaliam-se as derivadas em quatro pontos intermediários.
+2.  Calcula-se uma média ponderada para estimar o próximo estado.
 
-**Precisão:** Erro global de $O(\Delta t^4)$ - muito bom!
+Possui erro global de ordem $O(\Delta t^4)$, conferindo alta precisão para a maioria das aplicações de engenharia.
 
 ### RK45 (Runge-Kutta-Fehlberg / Embedded)
-Uma versão mais sofisticada que calcula simultaneamente uma solução de 4ª e outra de 5ª ordem. A diferença entre elas dá uma estimativa do erro, permitindo (em implementações completas) ajustar o passo de tempo automaticamente.
-
-Neste script, usamos o RK45 principalmente pra **validar** que o RK4 está funcionando bem (as duas soluções devem ser quase idênticas).
+Método adaptativo que calcula simultaneamente soluções de 4ª e 5ª ordem. A discrepância entre as soluções fornece uma estimativa do erro local, permitindo o ajuste automático do passo de tempo em implementações avançadas. Neste trabalho, utiliza-se o RK45 para validação comparativa.
 
 ## Análise dos Resultados
 
 ### Resposta Transiente do Reator (Comparação RK4 vs RK45)
 ![Gráfico de Reatores Mistos](images/reatores_mistos_plot.png)
 
-**O que estamos vendo no gráfico:**
-O gráfico mostra a evolução no tempo de **5 concentrações diferentes** (C1 a C5), correspondentes à dinâmica interna do reator ou múltiplas espécies.
+**Descrição:**
+O gráfico apresenta a evolução temporal de **5 concentrações distintas** (C1 a C5), ilustrando a dinâmica de múltiplas espécies ou condições.
 
-1.  **Linhas Sólidas Coloridas (RK4):** Representam a solução calculada pelo método Runge-Kutta clássico de 4ª ordem.
-2.  **Círculos Vazios (RKF45):** "Bolinhas" plotadas em intervalos (scatter) representam a solução pelo método Embedded (Runge-Kutta-Fehlberg).
+-   **Linhas Sólidas:** Solução via método RK4 Clássico.
+-   **Marcadores Circulares:** Solução via método RKF45 (Embedded).
 
 **Análise:**
-- **Sobreposição:** Note que os círculos vazios caem exatamente em cima das linhas sólidas. Isso confirma que nosso RK4 simples está tão preciso quanto o método avançado para este problema.
-- **Dinâmica:** Todas as concentrações partem de zero (ou valor inicial baixo) e crescem até atingir um patamar constante. Esse patamar é o **estado estacionário**.
-- **Tempo de Estabilização:** O sistema leva cerca de 2-3 segundos (no tempo adimensional ou real do problema) para sair do transiente e estabilizar.
+1.  **Validação Numérica:** Observa-se uma sobreposição perfeita entre os marcadores (RKF45) e as linhas sólidas (RK4). Isso confirma a precisão da implementação RK4 e a adequação do passo de tempo escolhido.
+2.  **Regime Transiente:** Partindo da condição inicial (ex: $t=0$), as concentrações elevam-se rapidamente, caracterizando o período de ajuste dinâmico do reator.
+3.  **Estado Estacionário:** Após aproximadamente 3 segundos (tempo de estabilização), as curvas atingem patamares constantes. Esses valores finais correspondem aos pontos de equilíbrio estático que seriam encontrados resolvendo o sistema algébrico (como no Programa 2).
 
-Este gráfico valida nossa implementação numérica: dois métodos diferentes deram o mesmo resultado.
-
+**Interpretação Física:**
+O gráfico simula, por exemplo, o comportamento de partida (start-up) do reator. Inicialmente, a reação e o acúmulo de massa provocam variações rápidas. Eventualmente, o sistema alcança o equilíbrio onde as taxas de entrada, saída e reação se balanceiam.

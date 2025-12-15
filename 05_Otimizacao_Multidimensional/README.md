@@ -1,48 +1,60 @@
 # Programa 5: Otimização Multidimensional
 
-## 1. Pré-requisitos e Execução
-Requer **Python 3** e as bibliotecas `numpy`, `sympy` (para cálculo simbólico de derivadas) e `matplotlib`.
+## Instruções de Execução
+Requer Python 3 com as bibliotecas `numpy`, `sympy` (cálculo simbólico) e `matplotlib`.
 
 ```bash
-# Como executar
 python otimizacao_multidimensional.py
 ```
 
-## 2. Contextualização Matemática
+## Contextualização do Problema
 
-O problema de otimização irrestrita consiste em encontrar um vetor $\mathbf{x}^* = [x^*, y^*]^T$ que minimize (ou maximize) uma função custo escalar $f(x, y)$.
+O problema de otimização irrestrita consiste em determinar o vetor de variáveis de projeto $\mathbf{x}^* = [x^*, y^*]^T$ que minimize (ou maximize) uma função objetivo escalar $f(x, y)$.
 
-$$ \min_{x,y}f(x, y) $$
+$$
+\min_{x,y} f(x, y)
+$$
 
-O script explora "superfícies de custo" complexas, como vales estreitos (funções de Rosenbrock-like) ou pontos de sela, onde métodos simples frequentemente falham.
+O script explora superfícies de custo contendo "vales estreitos" (funções tipo Rosenbrock) e pontos de sela, cenários desafiadores para algoritmos de otimização convencionais.
 
-## 3. Metodologia Numérica
+## Metodologia Numérica
 
-Foram implementados quatro algoritmos clássicos para comparação:
+Implementaram-se quatro algoritmos clássicos para análise comparativa:
 
-1.  **Aclive Máximo (Steepest Descent/Ascent)**:
+1.  **Aclive Máximo (Steepest Descent/Ascent):**
     *   Direção: $\mathbf{d}_k = -\nabla f(\mathbf{x}_k)$.
-    *   Características: Método de primeira ordem. Robusto longe do ótimo, mas sofre de "zigue-zague" em vales estreitos, tornando a convergência lenta perto da solução.
+    *   **Características:** Método de primeira ordem. Robusto longe do ótimo, porém apresenta convergência lenta ("zigue-zague") em vales estreitos.
 
-2.  **Gradientes Conjugados (Fletcher-Reeves)**:
+2.  **Gradientes Conjugados (Fletcher-Reeves):**
     *   Direção: Combinação linear do gradiente atual e da direção anterior.
-    *   Características: Garante que as direções de busca sejam "conjugadas" em relação à Hessiana, "cortando caminho" pelos vales e convergindo muito mais rápido que o gradiente simples.
+    *   **Características:** Utiliza direções "conjugadas" em relação à Hessiana, permitindo avançar de forma mais eficiente através de vales alongados.
 
-3.  **Método de Newton Multidimensional**:
+3.  **Método de Newton Multidimensional:**
     *   Direção: $\mathbf{d}_k = -[\mathbf{H} f(\mathbf{x}_k)]^{-1} \nabla f(\mathbf{x}_k)$.
-    *   Características: Método de segunda ordem (usa curvatura/Hessiana). Convergência quadrática (extremamente rápida) perto do ótimo, mas pode divergir se o ponto inicial estiver longe ou se a Hessiana não for positiva definida.
+    *   **Características:** Método de segunda ordem (utiliza curvatura). Apresenta convergência quadrática (acelerada) nas proximidades do ótimo, mas é sensível à condição inicial e à definição positiva da Hessiana.
 
-4.  **Levenberg-Marquardt**:
-    *   Direção: Interpolação entre Newton e Gradiente. $\mathbf{d}_k = -[\mathbf{H} + \lambda \mathbf{I}]^{-1} \nabla f$.
-    *   Características: Se $\lambda$ é grande (longe do ótimo), comporta-se com Gradiente (robusto). Se $\lambda$ é pequeno (perto do ótimo), comporta-se como Newton (rápido).
+4.  **Levenberg-Marquardt:**
+    *   Direção: Interpolação adaptativa: $\mathbf{d}_k = -[\mathbf{H} + \lambda \mathbf{I}]^{-1} \nabla f$.
+    *   **Características:** Combina a robustez do Gradiente (longe do ótimo, $\lambda$ grande) com a velocidade de Newton (perto do ótimo, $\lambda$ pequeno).
 
-## 4. Análise dos Resultados
+## Análise dos Resultados
 
-O script gera um gráfico de curvas de nível da função objetivo e traça o caminho percorrido por cada método.
-
-### Mapa de Contorno e Caminhos
+### Mapa de Contorno e Caminhos de Otimização
 ![Comparação de Otimização](images/result_plot.png)
-*Observe como o método de Newton (se não falhar) geralmente vai direto ao ponto, enquanto o Gradiente faz curvas. O Gradiente Conjugado corrige essa ineficiência.*
 
-### Tabela de Desempenho (no terminal)
-O script também exibe uma tabela comparativa com o número de passos e tempo de execução. Repare que o script possui uma **Lógica de Failover**: se ele tenta achar um mínimo e os métodos de gradiente divergem (vão para infinito), ele detecta que a função pode ser côncava e reinicia a busca procurando um **Máximo**.
+**Descrição:**
+- As curvas de nível representam a topografia da função objetivo.
+- O marcador vermelho indica o ponto inicial comum a todos os métodos.
+- As linhas traçam a trajetória iterativa de cada algoritmo.
+
+**Análise Detalhada:**
+1.  **Aclive Máximo (Azul, Círculos):** Exibe o característico padrão em zigue-zague (passos ortogonais), resultando em convergência lenta.
+2.  **Gradientes Conjugados (Rosa, X):** Apresenta uma trajetória mais direta, corrigindo a ineficiência do gradiente puro.
+3.  **Newton (Vermelho, Triângulos):** Quando converge, segue uma trajetória quase direta ao ótimo em poucas iterações.
+4.  **Levenberg-Marquardt (Roxo, Quadrados):** Demonstra comportamento robusto e eficiente, atuando como um intermediário entre Newton e Gradiente.
+
+### Tabela de Desempenho (Console)
+
+O script exibe métricas quantitativas (número de passos, tempo de execução e erro final) para avaliação de eficiência.
+
+**Nota sobre Robustez (Failover):** O algoritmo possui uma lógica de detecção de divergência. Caso a busca por um ponto de **mínimo** falhe (métodos divergindo para infinito, indicando concavidade), o sistema reinicia automaticamente o processo buscando por um **máximo**.
