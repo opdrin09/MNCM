@@ -69,7 +69,8 @@ Nesta análise, fixa-se $\Delta t = 0.01$ e varia-se o número de Reynolds de 0 
 Este gráfico apresenta a comparação entre a solução numérica obtida (linha tracejada) e a solução analítica exata para o caso não-linear, conforme descrita na literatura (Sobral et al., Equação 22).
 
 **Análise:**
-- Verifica-se a sobreposição das curvas, validando a implementação do método numérico.
-- O algoritmo RK4 demonstra capacidade de reproduzir com fidelidade a dinâmica não-linear do sistema.
+- Verifica-se a sobreposição das curvas a partir de um certo ponto (cerca de 2 no tempo admensional), validando a implementação do método numérico para tal trecho.
+- A parte inicial em que não há sobreposição indica uma provável diferença entre as condições de contorno adotadas pelos 2 modelos ou simplesmente uma complexidade a mais no modelo exato que considera melhor as escalas do problema, visto que apesar de haver divergência neste termo, a forma do gráfico ainda é a mesma. 
+
 
 **Conclusão:** O código encontra-se validado e apto para simulações em diferentes regimes de Reynolds.
