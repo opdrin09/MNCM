@@ -14,6 +14,11 @@
 # Carrega a biblioteca para fazer os gráficos
 using Plots
 
+# Cria a pasta images se não existir
+if !isdir("images")
+    mkdir("images")
+end
+
 # --- Parâmetros Globais da Simulação ---
 
 const T_MAXIMO = 10  # Tempo máximo de simulação (adimensional)
@@ -78,6 +83,7 @@ println("                         Gráfico com Re = 0")
 println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 println("")
 println("")
+savefig(grafico_stokes, "images/convergencia_stokes.png")
 display(grafico_stokes) # Mostra o gráfico com as soluções numéricas e analítica
 
 
@@ -115,7 +121,7 @@ println("                         Gráfico com Re > 0")
 println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 println("")
 println("")
-
+savefig(grafico_reynolds, "images/efeito_reynolds.png")
 display( grafico_reynolds) # Mostra o gráfico com as soluções para diferentes Re
 
 
@@ -177,4 +183,5 @@ println("                    Gráfico comparativo com o artigo")
 println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 println("")
 println("")
+savefig(grafico_comparativo, "images/comparacao_artigo.png")
 display(grafico_comparativo)

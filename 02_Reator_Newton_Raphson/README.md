@@ -1,62 +1,83 @@
 # Programa 2: Reator CSTR com Newton-Raphson
 
-## 1. Pré-requisitos e Execução
-Este programa requer **Python 3** com as bibliotecas `numpy` e `matplotlib` instaladas.
+## Como Rodar
+Precisa de Python 3 com `numpy` e `matplotlib`:
 
 ```bash
-# Como executar
 python reator_newton_raphson.py
 ```
-O script gerará automaticamente os mapas de convergência na pasta `images/`.
 
-## 2. Contextualização Física e Matemática
+Os mapas de calor serão salvos automaticamente em `images/`.
 
-O problema consiste na análise de operação estacionária de um **Reator de Tanque Agitado Continuamente (CSTR)** onde ocorre uma reação exotérmica de primeira ordem $A \to B$. 
+## O Problema
 
-### As Equações Governantes
-O sistema é regido pelos balanços de massa e energia. No estado estacionário (derivadas temporais nulas), temos um sistema de equações não-lineares acopladas:
+Imagine um reator químico onde acontece uma reação exotérmica (que libera calor) do tipo $A \to B$. O reator é do tipo CSTR (Continuous Stirred-Tank Reactor), ou seja, tem entrada e saída contínuas de material e é bem misturado.
 
-1.  **Balanço de Massa:**
-    $$ f_1(C_A, T) = \frac{C_{A,in} - C_A}{\tau} - k(T)C_A = 0 $$
+A gente quer saber: **em que condições de concentração e temperatura o reator vai operar no estado estacionário** (quando tudo para de mudar com o tempo)?
 
-2.  **Balanço de Energia:**
-    $$ f_2(C_A, T) = \frac{\rho c_p (T_e - T)}{\tau} + (-\Delta H)k(T)C_A - \frac{UA}{V}(T - T_c) = 0 $$
+### As Equações
 
-Onde a constante de velocidade segue a **Lei de Arrhenius**, introduzindo a forte não-linearidade exponencial:
+No equilíbrio, dois balanços precisam ser satisfeitos simultaneamente:
+
+1. **Balanço de Massa** (quanto de reagente A sobra):
+   $$ f_1(C_A, T) = \frac{C_{A,in} - C_A}{\tau} - k(T)C_A = 0 $$
+
+2. **Balanço de Energia** (quanto de calor entra e sai):
+   $$ f_2(C_A, T) = \frac{\rho c_p (T_e - T)}{\tau} + (-\Delta H)k(T)C_A - \frac{UA}{V}(T - T_c) = 0 $$
+
+A taxa de reação $k(T)$ segue a **Lei de Arrhenius**, que faz ela crescer exponencialmente com a temperatura:
 $$ k(T) = k_0 \exp\left(-\frac{E}{RT}\right) $$
 
-**Variáveis e Parâmetros:**
-*   $C_A, T$: Concentração e Temperatura do reator (Incógnitas).
-*   $\tau$: Tempo de residência.
-*   $(-\Delta H)$: Calor de reação (Exotérmico).
-*   $UA$: Coeficiente global de troca térmica.
+Isso cria uma não-linearidade forte: quanto mais quente, mais rápida a reação, que libera mais calor, que aquece mais o reator... Pode virar um ciclo!
 
 ### O Fenômeno da Multiplicidade
-Devido à não-linearidade do termo de Arrhenius (geração de calor) versus a linearidade da remoção de calor, este sistema pode apresentar **multiplicidade de estados estacionários**:
-1.  **Estado Baixo (Extinção)**: Baixa conversão, baixa temperatura (Reação lenta).
-2.  **Estado Alto (Ignição)**: Alta conversão, alta temperatura (Reação rápida).
-3.  **Estado Intermediário**: Instável matematicamente (ponto de sela).
 
-## 3. Metodologia Numérica: Newton-Raphson Multidimensional
+Por causa dessa não-linearidade, o reator pode ter **mais de um estado de equilíbrio possível**:
 
-Para encontrar as raízes simultâneas $\mathbf{x} = [C_A, T]^T$ tal que $\mathbf{F}(\mathbf{x}) = 0$, utilizamos o método iterativo de Newton-Raphson:
+1. **Estado "Apagado"**: Temperatura baixa, reação lenta, pouca conversão de A.
+2. **Estado "Aceso"**: Temperatura alta, reação rápida, muita conversão de A.
+3. **Estado Intermediário**: Matematicamente existe, mas é instável (qualquer perturbação faz o sistema ir pro estado 1 ou 2).
 
-$$ \mathbf{x}_{k+1} = \mathbf{x}_k - \mathbf{J}^{-1}(\mathbf{x}_k) \mathbf{F}(\mathbf{x}_k) $$
+## O Método Numérico
 
-Onde $\mathbf{J}$ é a matriz Jacobiana das derivadas parciais:
-$$ \mathbf{J} = \begin{bmatrix} \frac{\partial f_1}{\partial C_A} & \frac{\partial f_1}{\partial T} \\ \frac{\partial f_2}{\partial C_A} & \frac{\partial f_2}{\partial T} \end{bmatrix} $$
+Para achar esses pontos de equilíbrio, usamos o **Método de Newton-Raphson para sistemas**. A ideia é:
 
-## 4. Análise dos Resultados
+1. Chuta um valor inicial para $(C_A, T)$.
+2. Calcula a matriz Jacobiana (derivadas parciais de $f_1$ e $f_2$).
+3. Atualiza o chute usando: $\mathbf{x}_{novo} = \mathbf{x}_{velho} - \mathbf{J}^{-1} \mathbf{F}$.
+4. Repete até convergir.
 
-O programa varre uma matriz de condições iniciais $(C_{A0}, T_0)$ e determina para qual estado estacionário o método converge.
+O interessante é que **dependendo do chute inicial, o método converge para estados diferentes**!
 
-### Mapas de Atração (Heatmaps)
-As imagens geradas mostram as "Bacias de Atração". Dependendo de onde o processo começa (condição inicial), ele pode convergir para o estado de "Ignição" ou "Extinção".
+## Análise dos Resultados
 
-1.  **Mapa de Concentração Final**:
-    ![Mapa de Concentração](images/mapa_concentracao.png)
-    *Cores diferentes indicam convergência para concentrações finais distintas (ex: zero para reação completa/alta temperatura, ou alta para reação lenta).*
+O programa varre uma grade de condições iniciais $(C_{A0}, T_0)$ e vê pra onde cada uma converge.
 
-2.  **Mapa de Temperatura Final**:
-    ![Mapa de Temperaturas](images/mapa_temperaturas.png)
-    *Mostra claramente as regiões quentes (estado ignição) e frias (estado extinção).*
+### Mapa de Concentração Final
+![Mapa de Concentração](images/mapa_concentracao.png)
+
+**O que esse mapa mostra:**
+- Cada pixel representa uma condição inicial diferente.
+- A cor indica a concentração final de equilíbrio que o método encontrou.
+- Regiões de cores bem diferentes indicam os diferentes estados estacionários.
+- As "fronteiras" entre cores mostram onde pequenas mudanças na condição inicial levam a estados completamente diferentes (sensibilidade às condições iniciais).
+
+**Interpretação física:**
+- Cores escuras (azul/roxo): Alta concentração final → Reação lenta, estado "apagado".
+- Cores claras (amarelo): Baixa concentração final → Reação rápida, estado "aceso", quase todo o reagente A foi consumido.
+
+### Mapa de Temperatura Final
+![Mapa de Temperaturas](images/mapa_temperaturas.png)
+
+**O que esse mapa mostra:**
+- Similar ao anterior, mas agora a cor indica a temperatura final.
+- Regiões quentes (amarelo/branco) correspondem ao estado "aceso".
+- Regiões frias (azul/roxo) correspondem ao estado "apagado".
+
+**Observação importante:** 
+Note que as fronteiras entre as regiões são bem definidas. Isso significa que existe uma "bacia de atração" para cada estado. Se você começar dentro de uma bacia, vai convergir para aquele estado específico, não importa exatamente onde dentro dela você começou.
+
+**Aplicação prática:**
+Esses mapas são úteis para operadores de reatores químicos. Eles mostram que:
+- Se o reator está operando no estado "apagado" e você quer levá-lo pro estado "aceso", não basta aumentar um pouquinho a temperatura inicial. Você precisa dar um "empurrão" grande o suficiente pra cruzar a fronteira entre as bacias.
+- Operar perto das fronteiras é perigoso, porque pequenas flutuações podem fazer o reator "pular" de um estado pro outro.
