@@ -14,14 +14,13 @@ Diferentemente da análise de estado estacionário (Programa 2), este estudo foc
 O sistema é governado por um sistema de EDOs acopladas:
 
 1.  **Variação da Concentração ($dC_A/dt$):**
-    $$
-    \frac{dC_A}{dt} = \frac{1}{\tau}(C_{A,in} - C_A) - k(T)C_A
-    $$
+
+   $$\frac{dC_A}{dt} = \frac{1}{\tau}(C_{A,in} - C_A) - k(T)C_A$$
 
 2.  **Variação da Temperatura ($dT/dt$):**
-    $$
-    \frac{dT}{dt} = \frac{1}{\rho c_p} \left[ \frac{\rho c_p}{\tau}(T_e - T) + (-\Delta H)k(T)C_A - \frac{UA}{V}(T - T_c) \right]
-    $$
+
+   $$\frac{dT}{dt} = \frac{1}{\rho c_p} \left[ \frac{\rho c_p}{\tau}(T_e - T) + (-\Delta H)k(T)C_A - \frac{UA}{V}(T - T_c) \right]$$
+   
 
 Estas equações descrevem a taxa instantânea de variação do sistema. A integração temporal permite reconstruir a trajetória completa ($C_A(t), T(t)$).
 
