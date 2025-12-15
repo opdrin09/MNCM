@@ -42,9 +42,10 @@ Cada diretório contém uma documentação técnica detalhada (README), incluind
 
 ## 📝 Sobre este Repositório
 
-**Autor:** Pedro Henrique da Silva Costa  
+**Autor:** Pedro Henrique da Silva Costa  | **Matrícula:** 231012639
+
 **Instituição:** Universidade de Brasília (UnB)  
-**Matrícula:** 231012639
+
 **Professor:** Rafael Gabler
 
 ### Nota sobre Desenvolvimento e Organização
