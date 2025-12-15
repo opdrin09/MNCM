@@ -46,6 +46,9 @@ Simula-se o resfriamento de uma barra (inicialmente a 500°C) até o equilíbrio
 
 ![Validação Perfil](images/tarefa_1_validacao_perfil.png)
 
+### Animação da Evolução Temporal
+![Animação Validação](images/tarefa_1_validacao_animacao.gif)
+
 **Análise:**
 - **Eixo X:** Posição na barra (0 = Centro, 5mm = Superfície).
 - **Marcadores Vermelhos:** Solução numérica.
@@ -65,6 +68,9 @@ Simula-se o aquecimento de uma barra partindo de 300°C, sujeita a uma fonte int
 
 #### Heatmap (Evolução Temporal)
 ![Heatmap Aplicação](images/tarefa_2_aplicacao_heatmap.png)
+
+### Animação da Aplicação
+![Animação Aplicação](images/tarefa_2_aplicacao_animacao.gif)
 
 **Descrição:**
 - **Eixo X:** Tempo (s).

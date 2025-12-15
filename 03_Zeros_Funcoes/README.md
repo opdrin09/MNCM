@@ -72,4 +72,4 @@ Utiliza uma aproximação linear baseada em **dois pontos** ($x_{k-1}, x_k$).
 - **Raízes Subsequentes:** Nota-se uma degradação progressiva na precisão final e na estabilidade da convergência para as últimas raízes (4ª e 5ª).
 - **Estabilidade:** A acumulação de erros numéricos inerente ao processo de deflação causa oscilações no erro antes da estabilização final para as últimas raízes.
 
-**Conclusão:** Embora ambos os métodos sejam eficazes, o método de Müller demonstra maior robustez e eficiência por iteração. A perda de precisão com a deflação é um comportamento numérico esperado e deve ser considerada em aplicações de alta precisão.
+**Conclusão:** Embora ambos os métodos sejam eficazes, o método de Müller demonstra maior consistência e eficiência por iteração. A perda de precisão com a deflação é um comportamento numérico esperado e deve ser considerada em aplicações de alta precisão.

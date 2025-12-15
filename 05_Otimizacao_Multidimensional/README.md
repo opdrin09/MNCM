@@ -23,7 +23,7 @@ Implementaram-se quatro algoritmos clássicos para análise comparativa:
 
 1.  **Aclive Máximo (Steepest Descent/Ascent):**
     *   Direção: $\mathbf{d}_k = -\nabla f(\mathbf{x}_k)$.
-    *   **Características:** Método de primeira ordem. Robusto longe do ótimo, porém apresenta convergência lenta ("zigue-zague") em vales estreitos.
+    *   **Características:** Método de primeira ordem. Estável longe do ótimo, porém apresenta convergência lenta ("zigue-zague") em vales estreitos.
 
 2.  **Gradientes Conjugados (Fletcher-Reeves):**
     *   Direção: Combinação linear do gradiente atual e da direção anterior.
@@ -35,7 +35,7 @@ Implementaram-se quatro algoritmos clássicos para análise comparativa:
 
 4.  **Levenberg-Marquardt:**
     *   Direção: Interpolação adaptativa: $\mathbf{d}_k = -[\mathbf{H} + \lambda \mathbf{I}]^{-1} \nabla f$.
-    *   **Características:** Combina a robustez do Gradiente (longe do ótimo, $\lambda$ grande) com a velocidade de Newton (perto do ótimo, $\lambda$ pequeno).
+    *   **Características:** Combina a estabilidade do Gradiente (longe do ótimo, $\lambda$ grande) com a velocidade de Newton (perto do ótimo, $\lambda$ pequeno).
 
 ## Análise dos Resultados
 
@@ -51,10 +51,10 @@ Implementaram-se quatro algoritmos clássicos para análise comparativa:
 1.  **Aclive Máximo (Azul, Círculos):** Exibe o característico padrão em zigue-zague (passos ortogonais), resultando em convergência lenta.
 2.  **Gradientes Conjugados (Rosa, X):** Apresenta uma trajetória mais direta, corrigindo a ineficiência do gradiente puro.
 3.  **Newton (Vermelho, Triângulos):** Quando converge, segue uma trajetória quase direta ao ótimo em poucas iterações.
-4.  **Levenberg-Marquardt (Roxo, Quadrados):** Demonstra comportamento robusto e eficiente, atuando como um intermediário entre Newton e Gradiente.
+4.  **Levenberg-Marquardt (Roxo, Quadrados):** Demonstra comportamento consistente e eficiente, atuando como um intermediário entre Newton e Gradiente.
 
 ### Tabela de Desempenho (Console)
 
 O script exibe métricas quantitativas (número de passos, tempo de execução e erro final) para avaliação de eficiência.
 
-**Nota sobre Robustez (Failover):** O algoritmo possui uma lógica de detecção de divergência. Caso a busca por um ponto de **mínimo** falhe (métodos divergindo para infinito, indicando concavidade), o sistema reinicia automaticamente o processo buscando por um **máximo**.
+**Nota sobre Estabilidade (Failover):** O algoritmo possui uma lógica de detecção de divergência. Caso a busca por um ponto de **mínimo** falhe (métodos divergindo para infinito, indicando concavidade), o sistema reinicia automaticamente o processo buscando por um **máximo**.
