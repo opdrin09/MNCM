@@ -44,5 +44,5 @@ O script gera um gráfico de curvas de nível da função objetivo e traça o ca
 ![Comparação de Otimização](images/result_plot.png)
 *Observe como o método de Newton (se não falhar) geralmente vai direto ao ponto, enquanto o Gradiente faz curvas. O Gradiente Conjugado corrige essa ineficiência.*
 
-### Log do Terminal
-O script também exibe uma tabela comparativa com o número de passos e tempo de execução. Repare que o script possui uma **Lógica de Failover**: se ele tenta achar um mínimo e diverge (vai para infinito), ele detecta que a função pode ser côncava e reinicia a busca procurando um **Máximo**.
+### Tabela de Desempenho (no terminal)
+O script também exibe uma tabela comparativa com o número de passos e tempo de execução, permitindo analisar qual método foi mais eficiente para cada caso de teste.
