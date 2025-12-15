@@ -11,7 +11,8 @@ python otimizacao_multidimensional.py
 ## 2. Contextualização Matemática
 
 O problema de otimização irrestrita consiste em encontrar um vetor $\mathbf{x}^* = [x^*, y^*]^T$ que minimize (ou maximize) uma função custo escalar $f(x, y)$.
-$$ \min_{x,y} f(x, y) $$
+
+$$ \min_{x,y}f(x, y) $$
 
 O script explora "superfícies de custo" complexas, como vales estreitos (funções de Rosenbrock-like) ou pontos de sela, onde métodos simples frequentemente falham.
 
