@@ -1,48 +1,43 @@
-# Métodos Numéricos para Ciências Mecânicas (Refactored)
+# Métodos Numéricos para Ciências Mecânicas (MNCM)
 
-Este repositório contém a coleção de programas e tarefas desenvolvidos para a disciplina de **Métodos Numéricos para Ciências Mecânicas (MNCM)** na Universidade de Brasília.
+Este repositório contém a coleção de scripts e notebooks desenvolvidos para a disciplina de **Métodos Numéricos**, organizados e documentados para estudo e reprodução.
 
-O repositório foi reorganizado e refatorado para garantir melhor estruturação, nomes de arquivos padronizados e geração automatizada de resultados visuais.
+Os projetos cobrem desde a física básica de fluidos até otimização complexa e resolução de equações diferenciais parciais, utilizando **Python** e **Julia**.
 
-## Estrutura do Repositório
+## 📚 Índice de Projetos
 
-O projeto está dividido em módulos numerados conforme a ordem de desenvolvimento:
+Cada pasta contém um `README.md` detalhado com a contextualização física, equações governantes e análise dos resultados.
 
-*   **[01_Tarefa_Intro](./01_Tarefa_Intro/)**: Scripts introdutórios em Julia.
-*   **[02_Reator_Newton_Raphson](./02_Reator_Newton_Raphson/)**: Solução de sistemas não-lineares (CSTR) com mapas de calor.
-*   **[03_Zeros_Funcoes](./03_Zeros_Funcoes/)**: Comparação dos métodos de Müller e Secante para raízes polinomiais.
-*   **[04_Conducao_Calor_1D](./04_Conducao_Calor_1D/)**: Simulação transiente de condução de calor (Diferenças Finitas) com animações.
-*   **[05_Otimizacao_Multidimensional](./05_Otimizacao_Multidimensional/)**: Comparação de métodos de otimização (Aclive, Gradientes Conjugados, Newton, Levenberg-Marquardt).
-*   **[06_Reatores_Mistos](./06_Reatores_Mistos/)**: Solução de EDOs para resposta transiente de reatores.
+| Pasta | Tópico | Linguagem | Descrição Resumida |
+| :--- | :--- | :---: | :--- |
+| **[01_Tarefa_Intro](./01_Tarefa_Intro)** | Dinâmica de Partículas | **Julia** | Solução de EDOs para movimento com arrasto de Stokes e quadrático. Link para **Google Colab**. |
+| **[02_Reator_Newton_Raphson](./02_Reator_Newton_Raphson)** | Sistemas Não-Lineares | **Python** | Análise de equilíbrio de um reator CSTR (multiplicidade de estados) usando Newton-Raphson. |
+| **[03_Zeros_Funcoes](./03_Zeros_Funcoes)** | Raízes de Polinômios | **Python** | Comparação dos métodos de Müller e Secante com deflação polinomial. |
+| **[04_Conducao_Calor_1D](./04_Conducao_Calor_1D)** | EDPs e Difusão | **Python** | Solução numérica da Equação do Calor Transiente por Diferenças Finitas (Método Implícito/TDMA). |
+| **[05_Otimizacao_Multidimensional](./05_Otimizacao_Multidimensional)** | Otimização | **Python** | Comparação de Gradient Descent, Conjugate Gradient e Newton em superfícies complexas. |
+| **[06_Reatores_Mistos](./06_Reatores_Mistos)** | Sistemas de EDOs | **Python** | Simulação transiente dinâmica de reatores químicos usando Runge-Kutta (RK4). |
 
-## Resumo dos Resultados Gerados
+## 🛠️ Como Utilizar este Repositório
 
-Cada pasta acima contém um `README.md` específico e uma subpasta `images/` com seus respectivos resultados. Abaixo estão alguns exemplos dos gráficos gerados automaticamente pelos scripts refatorados:
+1.  **Clone o repositório:**
+    ```bash
+    git clone https://github.com/opdrin09/MNCM
+    ```
+2.  **Navegue até a pasta do projeto desejado:**
+    ```bash
+    cd MNCM_Refactored/04_Conducao_Calor_1D  # Exemplo
+    ```
+3.  **Instale as dependências (Python):**
+    ```bash
+    pip install numpy matplotlib sympy
+    ```
+4.  **Execute o script:**
+    ```bash
+    python conducao_calor_1d.py
+    ```
+    *Os resultados (gráficos e animações) serão salvos automaticamente na subpasta `images/` de cada projeto.*
 
-| Condução de Calor (Animação) | Otimização Multidimensional |
-| :---: | :---: |
-| ![Calor](04_Conducao_Calor_1D/images/tarefa_2_aplicacao_animacao.gif) | ![Otimização](05_Otimizacao_Multidimensional/images/result_plot.png) |
-
-| Convergência (Raízes) | Reator CSTR (Heatmap) |
-| :---: | :---: |
-| ![Raízes](03_Zeros_Funcoes/images/grafico_convergencia_primeira_raiz.png) | ![CSTR](02_Reator_Newton_Raphson/images/mapa_concentracao.png) |
-
-## Como Utilizar
-
-Todos os scripts Python foram refatorados para execução direta (sem inputs interativos bloqueantes) e salvam os resultados na pasta `images/` local de cada módulo.
-
-Para rodar qualquer programa, navegue até a pasta e execute:
-```bash
-cd 0X_Nome_Da_Pasta
-python nome_do_script.py
-```
-
-## Requisitos Gerais
-- Python 3.x
-- `numpy`
-- `matplotlib`
-- `sympy` (apenas para Otimização)
-- `pillow` (opcional, para salvar GIFs)
-
----
-*Organizado por Pedro Henrique da Silva Costa - Matrícula 231012639*
+## 👤 Autor
+**Pedro Henrique da Silva Costa**
+Universidade de Brasília (UnB)
+Matrícula: 231012639
