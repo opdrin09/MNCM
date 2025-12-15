@@ -47,11 +47,11 @@ Implementaram-se quatro algoritmos clássicos para análise comparativa:
 - O marcador vermelho indica o ponto inicial comum a todos os métodos.
 - As linhas traçam a trajetória iterativa de cada algoritmo.
 
-**Análise Detalhada:**
+**Análise:**
 1.  **Aclive Máximo (Azul, Círculos):** Exibe o característico padrão em zigue-zague (passos ortogonais), resultando em convergência lenta.
-2.  **Gradientes Conjugados (Rosa, X):** Apresenta uma trajetória mais direta, corrigindo a ineficiência do gradiente puro.
+2.  **Gradientes Conjugados (Rosa, X):** Apresenta uma trajetória mais direta, corrigindo a ineficiência do gradiente puro (isso não é diretamente visualizado para esta função específica, mas é evidenciada pelo número de passos).
 3.  **Newton (Vermelho, Triângulos):** Quando converge, segue uma trajetória quase direta ao ótimo em poucas iterações.
-4.  **Levenberg-Marquardt (Roxo, Quadrados):** Demonstra comportamento consistente e eficiente, atuando como um intermediário entre Newton e Gradiente.
+4.  **Levenberg-Marquardt (Roxo, Quadrados):** Normalmente demonstra comportamento consistente e eficiente, atuando como um intermediário entre Newton e Gradiente (o que não é o caso para este exemplo específico, mas pode ser visto alterando o código e escolhendo-se uma função válida qualquer).
 
 ### Tabela de Desempenho (Console)
 
