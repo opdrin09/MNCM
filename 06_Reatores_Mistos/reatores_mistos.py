@@ -114,9 +114,10 @@ colors = ['b', 'g', 'r', 'c', 'm']
 labels = ['C1', 'C2', 'C3', 'C4', 'C5']
 
 # Plot RK4 Clássico
+linestyles = ['-', '--', '-.', ':', '-'] # Estilos variados para distinguir sobreposição
 for i in range(5):
     plt.plot(sol_classica[:,0], sol_classica[:,i+1], 
-             color=colors[i], linestyle='-', linewidth=1.5, alpha=0.6,
+             color=colors[i], linestyle=linestyles[i], linewidth=2.0 - i*0.2, alpha=0.9,
              label=f'{labels[i]} (RK4)')
 
 # Plot RK Embutido
@@ -137,4 +138,6 @@ plt.legend(loc='lower right', ncol=2, fontsize='small')
 plt.tight_layout()
 save_path = os.path.join(output_dir, 'reatores_mistos_plot.png')
 plt.savefig(save_path, dpi=300)
-plt.show()
+plt.savefig(save_path, dpi=300)
+print(f"Gráfico salvo em {save_path}")
+# plt.show()
