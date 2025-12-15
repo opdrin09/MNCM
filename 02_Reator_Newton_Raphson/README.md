@@ -20,14 +20,12 @@ O objetivo é determinar as **condições de operação em estado estacionário*
 No equilíbrio, os balanços de massa e energia devem ser satisfeitos simultaneamente:
 
 1.  **Balanço de Massa:**
-    $$
-    f_1(C_A, T) = \frac{C_{A,in} - C_A}{\tau} - k(T)C_A = 0
-    $$
+    
+    $$f_1(C_A, T) = \frac{C_{A,in} - C_A}{\tau} - k(T)C_A = 0$$
 
 2.  **Balanço de Energia:**
-    $$
-    f_2(C_A, T) = \frac{\rho c_p (T_e - T)}{\tau} + (-\Delta H)k(T)C_A - \frac{UA}{V}(T - T_c) = 0
-    $$
+   
+    $$f _2(C_A, T) = \frac{\rho c_p (T_e - T)}{\tau} + (-\Delta H)k(T)C_A - \frac{UA}{V}(T - T_c) = 0 $$
 
 A constante cinética $k(T)$ segue a **Lei de Arrhenius**:
 $$
@@ -51,9 +49,9 @@ Para solucionar o sistema não-linear acoplado, utiliza-se o **Método de Newton
 1.  Define-se uma estimativa inicial $(C_{A0}, T_0)$.
 2.  Calcula-se a Matriz Jacobiana ($\mathbf{J}$) contendo as derivadas parciais.
 3.  Atualiza-se a solução iterativamente:
-    $$
-    \mathbf{x}_{k+1} = \mathbf{x}_k - \mathbf{J}^{-1}(\mathbf{x}_k) \mathbf{F}(\mathbf{x}_k)
-    $$
+    
+  $$  \mathbf{x}_{k+1} = \mathbf{x}_k - \mathbf{J}^{-1}(\mathbf{x}_k) \mathbf{F}(\mathbf{x}_k)$$
+    
 4.  O processo repete-se até a convergência.
 
 Nota-se que a solução final depende fortemente da estimativa inicial fornecida.
