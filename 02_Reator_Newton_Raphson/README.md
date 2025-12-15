@@ -57,27 +57,21 @@ O programa varre uma grade de condições iniciais $(C_{A0}, T_0)$ e vê pra ond
 ![Mapa de Concentração](images/mapa_concentracao.png)
 
 **O que esse mapa mostra:**
-- Cada pixel representa uma condição inicial diferente.
-- A cor indica a concentração final de equilíbrio que o método encontrou.
-- Regiões de cores bem diferentes indicam os diferentes estados estacionários.
-- As "fronteiras" entre cores mostram onde pequenas mudanças na condição inicial levam a estados completamente diferentes (sensibilidade às condições iniciais).
-
-**Interpretação física:**
-- Cores escuras (azul/roxo): Alta concentração final → Reação lenta, estado "apagado".
-- Cores claras (amarelo): Baixa concentração final → Reação rápida, estado "aceso", quase todo o reagente A foi consumido.
+- Cada pixel representa uma condição inicial diferente ($C_{A0}, T_0$).
+- A cor indica a concentração final de equilíbrio encontrada.
+- **Interpretação das Cores (escala Viridis):**
+   - **Roxo/Azul (Valores baixos):** Indica baixa concentração final de A. Isso significa que a reação ocorreu e consumiu o reagente. $\to$ **Estado ACESO**.
+   - **Amarelo/Verde (Valores altos):** Indica alta concentração final de A. O reagente sobrou quase todo. $\to$ **Estado APAGADO**.
+- Vimos claramente as bacias de atração: dependendo de onde você começa, o reator "cai" para o estado aceso ou apagado.
 
 ### Mapa de Temperatura Final
 ![Mapa de Temperaturas](images/mapa_temperaturas.png)
 
 **O que esse mapa mostra:**
-- Similar ao anterior, mas agora a cor indica a temperatura final.
-- Regiões quentes (amarelo/branco) correspondem ao estado "aceso".
-- Regiões frias (azul/roxo) correspondem ao estado "apagado".
+- A cor indica a temperatura final de equilíbrio.
+- **Interpretação das Cores (escala Plasma):**
+   - **Amarelo (Valores altos):** Temperatura alta. $\to$ **Estado ACESO** (Exotérmico).
+   - **Roxo (Valores baixos):** Temperatura baixa (próxima da entrada). $\to$ **Estado APAGADO**.
 
-**Observação importante:** 
-Note que as fronteiras entre as regiões são bem definidas. Isso significa que existe uma "bacia de atração" para cada estado. Se você começar dentro de uma bacia, vai convergir para aquele estado específico, não importa exatamente onde dentro dela você começou.
-
-**Aplicação prática:**
-Esses mapas são úteis para operadores de reatores químicos. Eles mostram que:
-- Se o reator está operando no estado "apagado" e você quer levá-lo pro estado "aceso", não basta aumentar um pouquinho a temperatura inicial. Você precisa dar um "empurrão" grande o suficiente pra cruzar a fronteira entre as bacias.
-- Operar perto das fronteiras é perigoso, porque pequenas flutuações podem fazer o reator "pular" de um estado pro outro.
+**Conclusão Visual:**
+Os dois mapas são complementares (onde um é amarelo, o outro tende a ser roxo, e vice-versa). Eles mostram a alta não-linearidade do sistema: uma pequena mudança na temperatura inicial (eixo X) pode fazer o sistema cruzar a fronteira abruptamente de "apagado" para "aceso" (fenômeno de ignição).
