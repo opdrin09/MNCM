@@ -55,4 +55,11 @@ Este repositório foi estruturado e documentado com o auxílio de ferramentas de
 - Padronizar a estrutura de arquivos e diretórios.
 - Implementar funcionalidades de persistência de resultados (salvamento automático de imagens).
 
+### Uso de LLMs nos códigos
+Usou-se de ferramentas de IA nos códigos desenvolvidos no escopo de:
+- Estruturar comentários e identação para padronização  em boas práticas.
+- Ajuda na implementação de lógica de failover e de boas práticas na própria estrutura (ex: definição de funções para plots, implementação de funções chamadas uma única vez para execuções antes feitas mais de uma vez no código, melhoras na estruturação dos inputs).
+
+
+
 **Observação:** Os códigos fonte apresentam pequenas adaptações em relação às versões originais submetidas na disciplina (ex: remoção de interatividade de console bloqueante, organização de pastas), mantendo-se inalterada a lógica numérica fundamental.
