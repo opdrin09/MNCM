@@ -45,11 +45,12 @@ Método adaptativo que calcula simultaneamente soluções de 4ª e 5ª ordem. A 
 **Descrição:**
 O gráfico apresenta a evolução temporal de **5 concentrações distintas** (C1 a C5), ilustrando a dinâmica de múltiplas espécies ou condições.
 
--   **Linhas Sólidas:** Solução via método RK4 Clássico.
--   **Marcadores Circulares:** Solução via método RKF45 (Embedded).
+-   **Linhas Variadas (RK4):** Solução via RK4 Clássico. Utilizaram-se estilos distintos (sólido, tracejado, etc.) para diferenciar as curvas, pois **C1, C2 e C5 convergem para o mesmo valor**, causando sobreposição.
+-   **Marcadores Circulares (RKF45):** Solução via RKF45 (Embedded).
 
 **Análise:**
-1.  **Validação Numérica:** Observa-se uma sobreposição perfeita entre os marcadores (RKF45) e as linhas sólidas (RK4). Isso confirma a precisão da implementação RK4 e a adequação do passo de tempo escolhido.
+1.  **Sobreposição Física:** Observa-se que $C_1$, $C_2$ e $C_5$ tendem ao mesmo estado estacionário (~11.5), o que explica a sobreposição visual das curvas.
+2.  **Validação Numérica:** Observa-se uma sobreposição perfeita entre os marcadores (RKF45) e as linhas do RK4. Isso confirma a precisão da implementação.
 2.  **Regime Transiente:** Partindo da condição inicial (ex: $t=0$), as concentrações elevam-se rapidamente, caracterizando o período de ajuste dinâmico do reator.
 3.  **Estado Estacionário:** Após aproximadamente 3 segundos (tempo de estabilização), as curvas atingem patamares constantes. Esses valores finais correspondem aos pontos de equilíbrio estático que seriam encontrados resolvendo o sistema algébrico (como no Programa 2).
 
